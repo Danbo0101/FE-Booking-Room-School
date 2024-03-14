@@ -1,0 +1,86 @@
+{
+    "homepage": {
+        "title1": "PTIT BOOKING ROOM",
+        "title2": "Trang web được tạo ra với mục đích quản lý đặt phòng cho trường PTIT",
+        "btn": "Bắt đầu — Đặt phòng ngay thôi !"
+    },
+    "header": {
+        "btnLogin": "Đăng Nhập",
+        "btnSignUp": "Đăng kí"
+    },
+    "login": {
+        "title": "Chào Mừng Bạn !",
+        "email": {
+            "title": "Email",
+            "content": "Nhập email ...",
+            "error": "Email không hợp lệ"
+        },
+        "password": {
+            "title": "Mật Khẩu",
+            "content": "Nhập Mật Khẩu",
+            "error": "Mật Khẩu không hợp lệ"
+        },
+        "forgot-password": "Quên Mật Khẩu ?",
+        "btn": "Đăng Nhập",
+        "sign-up": {
+            "ask": "Bạn chưa có tài khoản ?",
+            "btn": "Đăng kí"
+        },
+        "success": "Đăng nhập thành công"
+    },
+    "register": {
+        "title": "Đăng kí !",
+        "user-name": {
+            "title": "Tên Đăng Nhập",
+            "content": "Nhập Tên Đăng Nhập...",
+            "error": "Tên Đăng Nhập không hợp lệ"
+        },
+        "email": {
+            "title": "Email",
+            "content": "Nhập email ...",
+            "error": "Email không hợp lệ"
+        },
+        "password": {
+            "title": "Mật Khẩu",
+            "content": "Nhập Mật Khẩu",
+            "error": "Mật Khẩu không hợp lệ"
+        },
+        "agree": {
+            "content": "Tôi đồng ý với Điều khoản dịch vụ, Chính sách bảo mật và Thỏa thuận xử lý dữ liệu",
+            "error": "Vui lòng đồng ý với Điều khoản dịch vụ, Chính sách bảo mật và Thỏa thuận xử lý dữ liệu"
+        },
+        "btn": "Đăng kí",
+        "sign-in": {
+            "ask": "Bạn đã có tài khoản ?",
+            "btn": "Đăng nhập"
+        },
+        "success": "Đăng kí thành công"
+    },
+    "recovery": {
+        "title": "Quên Mật Khẩu ",
+        "email": {
+            "title": "Email",
+            "content": "Nhập email ...",
+            "error": "Email không hợp lệ",
+            "btn": "Gửi OTP"
+        },
+        "otp": {
+            "title": "Mã Xác Nhận",
+            "content": "Nhập Mã Xác Nhận...",
+            "error": "Mã Xác Nhận không hợp lệ",
+            "message": "Mã Xác Nhận đã được gửi tới Email của bạn",
+            "btn": "Xác nhận"
+        },
+        "password": {
+            "title": "Mật Khẩu",
+            "content": "Nhập Mật Khẩu",
+            "error": "Mật Khẩu không hợp lệ"
+        },
+        "btn": "Thay đổi mật khẩu",
+        "sign-in": {
+            "ask": "Bạn đã có tài khoản ?",
+            "btn": "Đăng nhập"
+        },
+        "success": "Thay đổi mật khẩu thành công"
+    }
+}
