@@ -1,0 +1,86 @@
+{
+    "homepage": {
+        "title1": "PTIT BOOKING ROOM",
+        "title2": "The website was created for the purpose of managing room reservations for PTIT school",
+        "btn": "Get started — it's free"
+    },
+    "header": {
+        "btnLogin": "Login",
+        "btnSignUp": "SignUp"
+    },
+    "login": {
+        "title": "Welcome back!",
+        "email": {
+            "title": "Email",
+            "content": "Enter your Email...",
+            "error": "Invalid Email"
+        },
+        "password": {
+            "title": "Password",
+            "content": "Enter your Password...",
+            "error": "Invalid Password"
+        },
+        "forgot-password": "Forgot your password ?",
+        "btn": "Login",
+        "sign-up": {
+            "ask": "Don’t have an account ?",
+            "btn": "Sign Up"
+        },
+        "success": "Login Success"
+    },
+    "register": {
+        "title": "Sign Up !",
+        "user-name": {
+            "title": "User Name",
+            "content": "Enter your User Name....",
+            "error": "Invalid User Name"
+        },
+        "email": {
+            "title": "Email",
+            "content": "Enter your Email...",
+            "error": "Invalid Email"
+        },
+        "password": {
+            "title": "Password",
+            "content": "Enter your Password...",
+            "error": "Invalid Password"
+        },
+        "agree": {
+            "content": "I agree to Terms of Service, Privacy Policy and Data Processing Agreement",
+            "error": "Please I agree to Terms of Service, Privacy Policy and Data Processing Agreement"
+        },
+        "btn": "Sign Up",
+        "sign-in": {
+            "ask": "Already have an account?",
+            "btn": "Sign In"
+        },
+        "success": "Register Success"
+    },
+    "recovery": {
+        "title": "Password Recovery",
+        "email": {
+            "title": "Email",
+            "content": "Enter your Email...",
+            "error": "Invalid Email",
+            "btn": "Sent OTP"
+        },
+        "otp": {
+            "title": "OTP",
+            "content": "Enter OTP...",
+            "error": "Invalid OTP",
+            "message": " OTP has been sent to your email",
+            "btn": "Submit OTP"
+        },
+        "password": {
+            "title": "Password",
+            "content": "Enter your Password...",
+            "error": "Invalid Password"
+        },
+        "btn": "Change Password",
+        "sign-in": {
+            "ask": "Already have an account?",
+            "btn": "Sign In"
+        },
+        "success": "Change Password Success"
+    }
+}

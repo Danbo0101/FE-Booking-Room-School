@@ -1,0 +1,65 @@
+.manage-devices-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    .title-page {
+        font-size: 30px;
+        font-weight: 600;
+    }
+
+    .main-ms-container {
+
+
+        .nav-link {
+            color: black;
+
+            &.active {
+                color: rgb(9, 9, 222)
+            }
+        }
+
+        .table {
+            text-align: center;
+
+            .inactivity {
+                background-color: rgb(224, 224, 224);
+
+            }
+
+            // tr.red-row {
+            //     background-color: red !important;
+            // }
+
+            td.btn {
+                display: flex;
+                gap: 20px;
+                align-items: center;
+                justify-content: center;
+
+                button {
+                    padding: 5px 20px;
+                    cursor: pointer;
+                }
+
+                button.btn.btn-warning {
+                    &:hover {
+                        background-color: #e4ad07;
+                        ;
+                    }
+                }
+
+                button.btn.btn-danger {
+                    &:hover {
+                        background-color: #be2d3c;
+                        ;
+                    }
+                }
+            }
+        }
+
+
+    }
+
+
+}

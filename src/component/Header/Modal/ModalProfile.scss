@@ -1,0 +1,10 @@
+.btn-submit {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    button.btn.btn-outline-primary {
+        padding: 10px 40px;
+        color: rgb(0, 30, 105);
+    }
+}
