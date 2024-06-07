@@ -13,8 +13,13 @@ const patchUpdateStatusRoom = (roomId, status) => {
     return axios.patch(`api/room/${roomId}`, { ...status });
 }
 
+const getTimeRoomEmpty = (id) => {
+    return axios.get(`/api/room/empty/${id}`);
+}
+
 export {
     getAllRoom,
     postCreateRoom,
-    patchUpdateStatusRoom
+    patchUpdateStatusRoom,
+    getTimeRoomEmpty
 }

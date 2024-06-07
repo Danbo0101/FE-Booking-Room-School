@@ -1,6 +1,15 @@
+import { useEffect, useState } from 'react';
 import './DashBoard.scss'
-import { IoFilter, IoTriangleOutline } from "react-icons/io5";
-import { FaRegSquare } from "react-icons/fa";
+import { toast } from 'react-toastify';
+import Filter from './Filter';
+import TableBooking from './TableBooking';
+import { getAllRoom, getTimeRoomEmpty } from '../../services/roomServices';
+import Box from '@mui/material/Box';
+import SpeedDial from '@mui/material/SpeedDial';
+import SpeedDialIcon from '@mui/material/SpeedDialIcon';
+import SpeedDialAction from '@mui/material/SpeedDialAction';
+import CreateIcon from '@mui/icons-material/Create';
+import BookingRoom from './Modal/ModalBookingRoom';
 
 
 
@@ -8,307 +17,148 @@ import { FaRegSquare } from "react-icons/fa";
 
 
 const DashBoard = (props) => {
+
+    const [zone, setZone] = useState('');
+    const [floor, setFloor] = useState('');
+
+    const [listRoom, setListRoom] = useState([]);
+    const [listRoomFilter, setListRoomFilter] = useState([]);
+    const [listRoomTime, setListRoomTime] = useState([]);
+
+
+    const [showBookingroom, setShowBookingRoom] = useState(false);
+
+
+    useEffect(() => {
+        fetchListRoom();
+    }, [])
+
+
+    const fetchListRoom = async () => {
+
+        let data = await getAllRoom();
+        if (data.message) {
+            console.log(data.message)
+        }
+        else {
+            setListRoom(data)
+        };
+
+    }
+
+    const filterByZoneAndFloor = () => {
+
+        if (zone === '') {
+            toast.warn('Please check Zone');
+            setFloor('');
+            return;
+        }
+        if (floor === '') {
+            toast.warn('Please check Floor')
+            setZone('');
+            return;
+        }
+
+        let listRFilter = listRoom.filter(item =>
+            item.zone === zone &&
+            item.floor === floor &&
+            item.status === "Hoạt động" &&
+            item.id !== "CSVC"
+        );
+
+        console.log(listRFilter);
+
+        setListRoomFilter(listRFilter);
+    };
+
+
+    const fetchTimeRoomEmpty = async () => {
+
+        let promises = listRoomFilter.map(item => {
+            return getTimeRoomEmpty(item.id).then(result => {
+                return { id: item.id, time: result };
+            });
+        });
+
+        let results = await Promise.all(promises);
+        console.log(results);
+        setListRoomTime(results);
+    }
+
+    useEffect(() => {
+        fetchTimeRoomEmpty();
+    }, [listRoomFilter])
+
+    // const data = [
+    //     { borrowTime: '2024-06-07T00:00:00.000Z', returnTime: '2024-06-07T01:40:00.000Z' },
+    //     { borrowTime: '2024-06-07T01:45:00.000Z', returnTime: '2024-06-07T03:25:00.000Z' },
+    //     { borrowTime: '2024-06-07T03:30:00.000Z', returnTime: '2024-06-07T05:10:00.000Z' },
+    //     { borrowTime: '2024-06-07T06:20:00.000Z', returnTime: '2024-06-07T08:00:00.000Z' },
+    //     { borrowTime: '2024-06-07T08:05:00.000Z', returnTime: '2024-06-07T09:45:00.000Z' }
+    // ];
+
+    // const convertToAMPM = (isoTimeString) => {
+    //     const date = new Date(isoTimeString);
+    //     const hours = date.getHours();
+    //     const minutes = date.getMinutes();
+    //     const ampm = hours >= 12 ? 'PM' : 'AM';
+    //     const formattedHours = hours % 12 || 12;
+    //     return `${formattedHours}:${minutes < 10 ? '0' : ''}${minutes} ${ampm}`;
+    // };
+
+    // const convertedData = data.map(item => ({
+    //     borrowTime: convertToAMPM(item.borrowTime),
+    //     returnTime: convertToAMPM(item.returnTime)
+    // }));
+
+    // console.log(convertedData);
+
+
+
+
+
+
     return (
         <div className="dashboard-contanier">
             <div className="left-contanier">
-                <div className='title'>
-                    Filter By
-                    <IoFilter />
-                </div>
-                <hr />
-                <div className='filter-content'>
-                    <div className='filter-child'>
-                        <div className='filter-child-title'>
-                            Zone
-                        </div>
-                        <div className="form-check filter-child">
-                            <input className="form-check-input" type="checkbox" id="child-1" />
-                            <label className="form-check-label filter-child-name" htmlFor="child-1">
-                                Zone A
-                            </label>
-                            <div className='filter-child-num'>
-                                12
-                            </div>
-                        </div>
-                        <div className="form-check filter-child">
-                            <input className="form-check-input" type="checkbox" id="child-2" />
-                            <label className="form-check-label filter-child-name" htmlFor="child-2">
-                                Zone B
-                            </label>
-                            <div className='filter-child-num'>
-                                12
-                            </div>
-                        </div>
-                        <div className="form-check filter-child">
-                            <input className="form-check-input" type="checkbox" value="" id="child-3" />
-                            <label className="form-check-label filter-child-name" htmlFor="child-3">
-                                Zone C
-                            </label>
-                            <div className='filter-child-num'>
-                                12
-                            </div>
-                        </div>
-                        <div className="form-check filter-child">
-                            <input className="form-check-input" type="checkbox" value="" id="child-4" />
-                            <label className="form-check-label filter-child-name" htmlFor="child-4">
-                                Zone D
-                            </label>
-                            <div className='filter-child-num'>
-                                12
-                            </div>
-                        </div>
-                        <div className="form-check filter-child">
-                            <input className="form-check-input" type="checkbox" value="" id="child-5" />
-                            <label className="form-check-label filter-child-name" htmlFor="child-5">
-                                Zone E
-                            </label>
-                            <div className='filter-child-num'>
-                                12
-                            </div>
-                        </div>
-                    </div>
-                    <hr />
-                    <div className='filter-child'>
-                        <div className='filter-child-title'>
-                            Floor
-                        </div>
-                        <div className="form-check filter-child">
-                            <input className="form-check-input" type="checkbox" id="child-6" />
-                            <label className="form-check-label filter-child-name" htmlFor="child-6">
-                                Floor 1
-                            </label>
-                            <div className='filter-child-num'>
-                                12
-                            </div>
-                        </div>
-                        <div className="form-check filter-child">
-                            <input className="form-check-input" type="checkbox" id="child-7" />
-                            <label className="form-check-label filter-child-name" htmlFor="child-7">
-                                Floor 2
-                            </label>
-                            <div className='filter-child-num'>
-                                12
-                            </div>
-                        </div>
-                        <div className="form-check filter-child">
-                            <input className="form-check-input" type="checkbox" value="" id="child-8" />
-                            <label className="form-check-label filter-child-name" htmlFor="child-8">
-                                Floor 3
-                            </label>
-                            <div className='filter-child-num'>
-                                12
-                            </div>
-                        </div>
-                        <div className="form-check filter-child">
-                            <input className="form-check-input" type="checkbox" value="" id="child-9" />
-                            <label className="form-check-label filter-child-name" htmlFor="child-9">
-                                Floor 4
-                            </label>
-                            <div className='filter-child-num'>
-                                12
-                            </div>
-                        </div>
-
-                    </div>
-                    <div className='btn-filter'>
-                        <button>Filter</button>
-                    </div>
-                </div>
-
+                <Filter
+                    zone={zone}
+                    floor={floor}
+                    filterByZoneAndFloor={filterByZoneAndFloor}
+                    setFloor={setFloor}
+                    setZone={setZone}
+                />
             </div>
             <div className="right-contanier">
-                <div className='title'>
-                    <div className='title-main'>
-                        <IoTriangleOutline />
-                        Floor Three
-                    </div>
-                    <div className='title-sub'>
-                        <div className='title-available'>
-                            <FaRegSquare />
-                            Available
-                        </div>
-                        <div className='title-unavailable'>
-                            <FaRegSquare />
-                            Unavailable
-                        </div>
-                    </div>
-
-                </div>
-                <div className='room'>
-                    <div className='room-name'>
-                        Room
-                    </div>
-                    <div className='time'>
-                        <div className='time-child'>6.am</div>
-                        <div className='time-child'>7.am</div>
-                        <div className='time-child'>8.am</div>
-                        <div className='time-child'>9.am</div>
-                        <div className='time-child'>10.am</div>
-                        <div className='time-child'>11.am</div>
-                        <div className='time-child'>12.am</div>
-                        <div className='time-child'>1.pm</div>
-                        <div className='time-child'>2.pm</div>
-                        <div className='time-child'>3.pm</div>
-                        <div className='time-child'>4.pm</div>
-                        <div className='time-child'>5.pm</div>
-                    </div>
-                </div>
-                <div className='room'>
-                    <div className='room-name'>
-                        Room 1
-                    </div>
-                    <div className='room-time'>
-                        <div className='room-time-child'></div>
-                        <div className='room-time-child'></div>
-                        <div className='room-time-child'></div>
-                        <div className='room-time-child'></div>
-                        <div className='room-time-child'></div>
-                        <div className='room-time-child'></div>
-                        <div className='room-time-child'></div>
-                        <div className='room-time-child'></div>
-                        <div className='room-time-child'></div>
-                        <div className='room-time-child'></div>
-                        <div className='room-time-child'></div>
-                        <div className='room-time-child'></div>
-                    </div>
-                </div>
-                <div className='room'>
-                    <div className='room-name'>
-                        Room 2
-                    </div>
-                    <div className='room-time'>
-                        <div className='room-time-child'></div>
-                        <div className='room-time-child active'></div>
-                        <div className='room-time-child active'></div>
-                        <div className='room-time-child active'></div>
-                        <div className='room-time-child active'></div>
-                        <div className='room-time-child active'></div>
-                        <div className='room-time-child'></div>
-                        <div className='room-time-child passive'></div>
-                        <div className='room-time-child passive'></div>
-                        <div className='room-time-child passive'></div>
-                        <div className='room-time-child passive'></div>
-                        <div className='room-time-child '></div>
-                    </div>
-                </div>
-                <div className='room'>
-                    <div className='room-name'>
-                        Room 3
-                    </div>
-                    <div className='room-time'>
-                        <div className='room-time-child'></div>
-                        <div className='room-time-child'></div>
-                        <div className='room-time-child'></div>
-                        <div className='room-time-child'></div>
-                        <div className='room-time-child'></div>
-                        <div className='room-time-child'></div>
-                        <div className='room-time-child'></div>
-                        <div className='room-time-child'></div>
-                        <div className='room-time-child'></div>
-                        <div className='room-time-child'></div>
-                        <div className='room-time-child'></div>
-                        <div className='room-time-child'></div>
-                    </div>
-                </div>
-                <div className='room'>
-                    <div className='room-name'>
-                        Room 4
-                    </div>
-                    <div className='room-time'>
-                        <div className='room-time-child'></div>
-                        <div className='room-time-child'></div>
-                        <div className='room-time-child'></div>
-                        <div className='room-time-child'></div>
-                        <div className='room-time-child'></div>
-                        <div className='room-time-child'></div>
-                        <div className='room-time-child'></div>
-                        <div className='room-time-child'></div>
-                        <div className='room-time-child'></div>
-                        <div className='room-time-child'></div>
-                        <div className='room-time-child'></div>
-                        <div className='room-time-child'></div>
-                    </div>
-                </div>
-                <div className='room'>
-                    <div className='room-name'>
-                        Room 5
-                    </div>
-                    <div className='room-time'>
-                        <div className='room-time-child'></div>
-                        <div className='room-time-child'></div>
-                        <div className='room-time-child'></div>
-                        <div className='room-time-child'></div>
-                        <div className='room-time-child'></div>
-                        <div className='room-time-child'></div>
-                        <div className='room-time-child'></div>
-                        <div className='room-time-child'></div>
-                        <div className='room-time-child'></div>
-                        <div className='room-time-child'></div>
-                        <div className='room-time-child'></div>
-                        <div className='room-time-child'></div>
-                    </div>
-                </div>
-                <div className='room'>
-                    <div className='room-name'>
-                        Room 6
-                    </div>
-                    <div className='room-time'>
-                        <div className='room-time-child'></div>
-                        <div className='room-time-child'></div>
-                        <div className='room-time-child'></div>
-                        <div className='room-time-child'></div>
-                        <div className='room-time-child'></div>
-                        <div className='room-time-child'></div>
-                        <div className='room-time-child'></div>
-                        <div className='room-time-child'></div>
-                        <div className='room-time-child'></div>
-                        <div className='room-time-child'></div>
-                        <div className='room-time-child'></div>
-                        <div className='room-time-child'></div>
-                    </div>
-                </div>
-                <div className='room'>
-                    <div className='room-name'>
-                        Room 7
-                    </div>
-                    <div className='room-time'>
-                        <div className='room-time-child'></div>
-                        <div className='room-time-child'></div>
-                        <div className='room-time-child'></div>
-                        <div className='room-time-child'></div>
-                        <div className='room-time-child'></div>
-                        <div className='room-time-child'></div>
-                        <div className='room-time-child'></div>
-                        <div className='room-time-child'></div>
-                        <div className='room-time-child'></div>
-                        <div className='room-time-child'></div>
-                        <div className='room-time-child'></div>
-                        <div className='room-time-child'></div>
-                    </div>
-                </div>
-                <div className='room'>
-                    <div className='room-name'>
-                        Room 8
-                    </div>
-                    <div className='room-time'>
-                        <div className='room-time-child'></div>
-                        <div className='room-time-child'></div>
-                        <div className='room-time-child'></div>
-                        <div className='room-time-child'></div>
-                        <div className='room-time-child'></div>
-                        <div className='room-time-child'></div>
-                        <div className='room-time-child'></div>
-                        <div className='room-time-child'></div>
-                        <div className='room-time-child'></div>
-                        <div className='room-time-child'></div>
-                        <div className='room-time-child'></div>
-                        <div className='room-time-child'></div>
-                    </div>
-                </div>
-
-
-
+                <TableBooking
+                    listRoomTime={listRoomTime}
+                    floor={floor}
+                />
             </div>
+            <Box sx={{ height: 550, transform: 'translateZ(0px)', flexGrow: 1 }}>
+                <SpeedDial
+                    ariaLabel="SpeedDial basic example"
+                    sx={{ position: 'absolute', bottom: -60, right: 16 }}
+                    icon={<SpeedDialIcon />}
+                    direction='left'
+                >
+                    <SpeedDialAction
+                        key="Booking Room"
+                        icon={<CreateIcon />}
+                        tooltipTitle="Booking Room"
+                        onClick={() => setShowBookingRoom(true)}
+
+                    />
+                </SpeedDial>
+            </Box>
+
+            <BookingRoom
+
+                show={showBookingroom}
+                setShow={setShowBookingRoom}
+                listRoom={listRoom}
+
+            />
         </div>
     )
 }

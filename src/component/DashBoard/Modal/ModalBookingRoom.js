@@ -1,7 +1,8 @@
 import "./ModalBookingRoom.scss";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Select from 'react-select';
-
+import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
 
 const BookingRoom = (props) => {
 
@@ -56,13 +57,47 @@ const BookingRoom = (props) => {
         { value: '2E08', label: '2E08' },
     ];
 
+
+    const [room, setRoom] = useState([]);
+
+
+
+    const fetchRoom = () => {
+        console.log(listRoom);
+        let rooms = []
+        listRoom.map(room => rooms.push({ value: room.id, label: room.id }))
+
+        console.log(rooms);
+    }
+
+    useEffect(() => {
+        fetchRoom()
+    }, [])
+
+
+
     const [nameRoom, setNameRoom] = useState('');
     const [time, setTime] = useState('')
 
+    const { show, setShow, listRoom } = props;
+
+    const handleClose = () => setShow(false);
+
+
     return (
-        <div className="booking-room">
-            <fieldset className="border rounded-3 p-3">
-                <legend className="float-none w-auto px-3">Booking Room</legend>
+        <Modal
+            show={show}
+            onHide={handleClose}
+            backdrop="static"
+            keyboard={false}
+            size="lg"
+            aria-labelledby="contained-modal-title-vcenter"
+            centered
+        >
+            <Modal.Header closeButton>
+                <Modal.Title>Booking Room</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
                 <div className="form-floating my-3">
                     <Select
                         defaultValue={nameRoom}
@@ -79,15 +114,12 @@ const BookingRoom = (props) => {
                         placeholder={"Time Booking ..."}
                     />
                 </div>
-                <div className="d-flex justify-content-center">
-                    <div
-                        // onClick={() => handleSubmitNewQuiz()}
-                        className="btn btn-warning mt-3 ms-auto me-auto">
-                        Booking
-                    </div>
-                </div>
-            </fieldset>
-        </div>
+            </Modal.Body>
+            <Modal.Footer>
+                <Button variant="primary">Booking</Button>
+            </Modal.Footer>
+        </Modal>
+
     )
 }
 

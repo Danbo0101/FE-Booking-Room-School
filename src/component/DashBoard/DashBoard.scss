@@ -37,10 +37,12 @@
                     flex-wrap: nowrap;
                     margin-bottom: 5px;
                     align-items: center;
-                    justify-content: space-between;
+                    justify-content: start;
 
                     input {
                         align-self: flex-start;
+                        margin-right: 10px;
+
                     }
 
                     .filter-child-name {
@@ -84,11 +86,15 @@
 
     .right-contanier {
         width: 75%;
-        border: 1px solid rgb(0, 0, 0);
-        border-radius: 5px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+
 
         .title {
             border: 1px solid rgb(0, 0, 0);
+            border-radius: 5px 5px 0 0;
             height: 10%;
             background: #D9D9D9;
             display: flex;
@@ -160,6 +166,7 @@
             display: flex;
             align-items: center;
 
+
             .room-name {
                 display: flex;
                 justify-content: center;
@@ -177,7 +184,7 @@
                 width: 84%;
 
                 .time-child {
-                    width: 9.6%;
+                    width: 20.6%;
                     height: 100%;
                     display: flex;
                     align-items: center;
@@ -194,12 +201,12 @@
                 width: 84%;
 
                 .room-time-child {
-                    width: 9.6%;
+                    width: 20.6%;
                     height: 100%;
                     border: 1px solid rgb(0, 0, 0);
 
                     &.active {
-                        background: #00DA16;
+                        background: #03b014;
                     }
 
                     &.passive {

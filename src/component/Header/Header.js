@@ -25,6 +25,7 @@ const Header = (props) => {
     const { role } = props;
 
     const [showProfile, setShowProfile] = useState(false);
+    const [showHistory, setShowHistory] = useState(false);
 
     const handleLogout = () => {
         dispatch(doLogout());
@@ -78,6 +79,9 @@ const Header = (props) => {
                                                 onClick={() => setShowProfile(true)}
                                             >Profile</NavDropdown.Item>
                                             <NavDropdown.Item
+                                                onClick={() => setShowHistory(true)}
+                                            >History</NavDropdown.Item>
+                                            <NavDropdown.Item
                                                 onClick={() => handleLogout()}
                                             >Log out</NavDropdown.Item>
                                         </NavDropdown>
@@ -118,10 +122,8 @@ const Header = (props) => {
                 </Container>
             </Navbar >
             <Profile
-
                 show={showProfile}
                 setShow={setShowProfile}
-
             />
         </>
     )

@@ -66,7 +66,8 @@ const Login = (props) => {
         }
 
         let data = await postLogin(dataLogin);
-        if (data.statusCode === 400) {
+        if (data.message) {
+            setIsLoading(false);
             toast.error('Invalid Login');
         }
         else {

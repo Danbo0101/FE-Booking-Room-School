@@ -4,7 +4,6 @@ import PerfectScrollbar from 'react-perfect-scrollbar'
 import Header from "../Header/Header"
 import Accordion from 'react-bootstrap/Accordion';
 import './Student.scss';
-import BookingRoom from './Modal/ModalBookingRoom';
 import { useSelector } from 'react-redux';
 
 
@@ -24,21 +23,6 @@ const Student = () => {
                 <PerfectScrollbar>
                     <div className='content'>
                         <Outlet />
-                        {role && role === 1 ?
-                            <div>
-                                <Accordion defaultActiveKey="0">
-                                    <Accordion.Item eventKey="0">
-                                        <Accordion.Header>Booking Room</Accordion.Header>
-                                        <Accordion.Body>
-                                            <BookingRoom />
-                                        </Accordion.Body>
-                                    </Accordion.Item>
-                                </Accordion>
-                            </div>
-                            :
-                            <>
-                            </>
-                        }
                     </div>
                 </PerfectScrollbar>
             </div>
