@@ -18,10 +18,10 @@ const TableStudent = (props) => {
                 <thead>
                     <tr >
                         <th>STT</th>
-                        <th>Name Student</th>
-                        <th>Class</th>
+                        <th>Tên</th>
+                        <th>Lớp</th>
                         <th>Email</th>
-                        <th>Action</th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -29,23 +29,23 @@ const TableStudent = (props) => {
                         listStudentPaginate.map((student, index) => {
                             return (
                                 <tr key={`table-student ${index}`}>
-                                    <td>{student.id}</td>
+                                    <td>{student.student_id}</td>
                                     <td>{student.name}</td>
-                                    <td>{student.className}</td>
+                                    <td>{student.class_name}</td>
                                     <td>{student.email}</td>
                                     <td className='btn'>
                                         <Button
                                             variant="info"
                                             onClick={() => props.handleViewStudent(student)}
                                         >View</Button>
-                                        <Button
+                                        {/* <Button
                                             variant="warning"
                                             onClick={() => props.handleUpdateStudent(student)}
                                         >Edit</Button>
                                         <Button
                                             variant="danger"
                                             onClick={() => props.handleDeleteStudent(student)}
-                                        >Delete</Button>
+                                        >Delete</Button> */}
                                     </td>
                                 </tr>
                             )

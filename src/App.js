@@ -13,6 +13,8 @@ import DashBoard from './component/DashBoard/Dashboard';
 import Student from './component/Students/Student';
 import ManageStudent from './component/Admin/ManageStudents/ManageStudents';
 import ManageEmployees from './component/Admin/ManageEmployees/ManageEmployees';
+import ManageBooking from './component/Admin/ManageBooking/ManageBooking';
+import PrivateRoute from './routes/PrivateRoute';
 
 
 
@@ -41,15 +43,26 @@ const App = () => {
         <Route path='/' element={<Layout />}>
           <Route index element={<HomePage />} />
         </Route>
-        <Route path='/students' element={<Student />}>
+        <Route path='/students' element={
+          <PrivateRoute>
+            <Student />
+          </PrivateRoute>
+        }>
           <Route index element={<DashBoard />} />
+
+
         </Route>
-        <Route path='/admin' element={<Admin />}>
+        <Route path='/admin' element={
+          <PrivateRoute>
+            <Admin />
+          </PrivateRoute>
+        }>
           <Route index element={<DashBoard />} />
           <Route path='manage-students' element={<ManageStudent />} />
           <Route path='manage-employees' element={<ManageEmployees />} />
           <Route path='manage-rooms' element={<ManageRooms />} />
           <Route path='manage-devices' element={<ManageDevices />} />
+          <Route path='manage-bookings' element={<ManageBooking />} />
         </Route>
 
         <Route path='*' element={<NotFound />} />

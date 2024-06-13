@@ -460,7 +460,7 @@ const ManageRoom = (props) => {
 
             <Accordion >
                 <Accordion.Item eventKey="0">
-                    <Accordion.Header>Add New Room</Accordion.Header>
+                    <Accordion.Header>Thêm phòng mới</Accordion.Header>
                     <Accordion.Body>
                         <CreateRoom
                         // handleCreateDeviceByRoom={handleCreateDeviceByRoom}
@@ -470,7 +470,7 @@ const ManageRoom = (props) => {
                 <Accordion.Item eventKey="1">
                     <Accordion.Header
                         onClick={() => setCurrentPage(1)}
-                    >Manage Room In School</Accordion.Header>
+                    >Quản lý phòng </Accordion.Header>
                     <Accordion.Body>
                         <Tab.Container id="left-tabs-example" defaultActiveKey="first">
                             <Row>
@@ -480,27 +480,27 @@ const ManageRoom = (props) => {
                                             <Nav.Link
                                                 eventKey="first"
                                                 onClick={() => setCurrentPage(1)}
-                                            >Floor 0
+                                            >Lầu 0
                                             </Nav.Link>
                                         </Nav.Item>
                                         <Nav.Item>
                                             <Nav.Link
                                                 eventKey="second"
                                                 onClick={() => setCurrentPage(1)}
-                                            >Floor 1</Nav.Link>
+                                            >Lầu 1</Nav.Link>
                                         </Nav.Item>
                                         <Nav.Item>
                                             <Nav.Link
                                                 eventKey="third"
                                                 onClick={() => setCurrentPage(1)}
-                                            >Floor 2
+                                            >Lầu 2
                                             </Nav.Link>
                                         </Nav.Item>
                                         <Nav.Item>
                                             <Nav.Link
                                                 eventKey="fourth"
                                                 onClick={() => setCurrentPage(1)}
-                                            >Floor 3</Nav.Link>
+                                            >Lầu 3</Nav.Link>
                                         </Nav.Item>
                                     </Nav>
                                 </Col>

@@ -51,8 +51,8 @@ const TableRemote = (props) => {
                 <thead>
                     <tr>
                         <th>ID</th>
-                        <th>Status</th>
-                        <th>Action</th>
+                        <th>Tình trạng</th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -69,7 +69,7 @@ const TableRemote = (props) => {
                                         <Button
                                             variant="warning"
                                             onClick={() => props.handleUpdateDevice(remote, "RM")}
-                                        >Delete</Button>
+                                        >Xóa thiết bị</Button>
 
                                     </td>
                                 </tr>

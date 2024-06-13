@@ -49,11 +49,11 @@ const TableRoom = (props) => {
                 <thead>
                     <tr>
                         <th>STT</th>
-                        <th>Name</th>
-                        <th>Zone</th>
-                        <th>Floor</th>
-                        <th>Status</th>
-                        <th>Action</th>
+                        <th>Tên phòng</th>
+                        <th>Dãy</th>
+                        <th>Lầu</th>
+                        <th>Tình trạng</th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -70,11 +70,11 @@ const TableRoom = (props) => {
                                         <Button
                                             variant="info"
                                             onClick={() => props.handleShowViewDevice(room.id)}
-                                        >View Devices</Button>
+                                        >Xem thiết bị</Button>
                                         <Button
                                             variant="warning"
                                             onClick={() => props.handleShowUpdateRoom(room.id, room.status)}
-                                        >Update Status</Button>
+                                        >Cập nhật tình trạng</Button>
                                         {/* <Button
                         variant="danger"
                     // onClick={() => props.handleDeleteDevice(key)}

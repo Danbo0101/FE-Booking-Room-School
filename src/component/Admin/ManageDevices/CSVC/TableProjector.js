@@ -51,8 +51,8 @@ const TableProjector = (props) => {
                 <thead>
                     <tr>
                         <th>ID</th>
-                        <th>Status</th>
-                        <th>Action</th>
+                        <th>Tình trạng</th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -68,7 +68,7 @@ const TableProjector = (props) => {
                                         <Button
                                             variant="warning"
                                             onClick={() => props.handleUpdateDevice(pj, "MC")}
-                                        >Delete</Button>
+                                        >Xóa thiết bị</Button>
 
                                     </td>
                                 </tr>

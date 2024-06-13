@@ -17,9 +17,14 @@ const getTimeRoomEmpty = (id) => {
     return axios.get(`/api/room/empty/${id}`);
 }
 
+const getDeviceCSVCAvailable = () => {
+    return axios.get(`/api/device/CSVC`);
+}
+
 export {
     getAllRoom,
     postCreateRoom,
     patchUpdateStatusRoom,
-    getTimeRoomEmpty
+    getTimeRoomEmpty,
+    getDeviceCSVCAvailable
 }

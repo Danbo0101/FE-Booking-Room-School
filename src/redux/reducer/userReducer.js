@@ -5,7 +5,8 @@ import { FETCH_LOGIN_SUCCESS, LOGOUT_SUCCESS } from '../action/userAction';
 
 const INITIAL_STATE = {
     account: {
-        id: '',
+        student_id: '',
+        employee_id: '',
         email: '',
         name: '',
         phone_number: '',
@@ -22,7 +23,8 @@ const userReducer = (state = INITIAL_STATE, action) => {
         case FETCH_LOGIN_SUCCESS:
             return {
                 ...state, account: {
-                    id: action?.payload?.student_id,
+                    student_id: action?.payload?.student_id,
+                    employee_id: action?.payload?.employee_id,
                     email: action?.payload?.email,
                     name: action?.payload?.name,
                     phone_number: action?.payload?.phone_number,
@@ -36,7 +38,8 @@ const userReducer = (state = INITIAL_STATE, action) => {
         case LOGOUT_SUCCESS:
             return {
                 ...state, account: {
-                    id: '',
+                    student_id: '',
+                    employee_id: '',
                     email: '',
                     name: '',
                     phone_number: '',

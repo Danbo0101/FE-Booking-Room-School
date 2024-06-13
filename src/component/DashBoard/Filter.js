@@ -33,14 +33,14 @@ const Filter = (props) => {
         <>
 
             <div className='title'>
-                Filter By
+                Bộ lọc
                 <IoFilter />
             </div>
             <hr />
             <div className='filter-content'>
                 <div className='filter-child'>
                     <div className='filter-child-title'>
-                        Zone
+                        Dãy
                     </div>
                     {['A', 'B', 'C', 'D', 'E'].map((z) => (
                         <div className="form-check filter-child" key={z}>
@@ -52,7 +52,7 @@ const Filter = (props) => {
                                 checked={zone === z}
                             />
                             <label className="form-check-label filter-child-name" htmlFor={`zone-${z}`}>
-                                Zone {z}
+                                Dãy {z}
                             </label>
                         </div>
                     ))}
@@ -60,7 +60,7 @@ const Filter = (props) => {
                 <hr />
                 <div className='filter-child'>
                     <div className='filter-child-title'>
-                        Floor
+                        Lầu
                     </div>
                     {[0, 1, 2, 3].map((f) => (
                         <div className="form-check filter-child" key={f}>
@@ -72,14 +72,14 @@ const Filter = (props) => {
                                 checked={floor === f}
                             />
                             <label className="form-check-label filter-child-name" htmlFor={`floor-${f}`}>
-                                Floor {f}
+                                Lầu {f}
                             </label>
                         </div>
                     ))}
 
                 </div>
                 <div className='btn-filter'>
-                    <button onClick={() => props.filterByZoneAndFloor()}>Filter</button>
+                    <button onClick={() => props.filterByZoneAndFloor()}>Lọc</button>
                 </div>
             </div>
 

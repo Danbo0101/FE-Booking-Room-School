@@ -47,7 +47,7 @@ const TableKey = (props) => {
 
 
 
-    // console.log(listKeyOfClass);
+    console.log(listKeyPaginate);
 
     return (
         <div className='table'>
@@ -55,18 +55,17 @@ const TableKey = (props) => {
                 <thead>
                     <tr>
                         <th>ID</th>
-                        <th>Room At</th>
-                        <th>Status</th>
-                        <th>Action</th>
+                        <th>Phòng</th>
+                        <th>Tình trạng</th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
                     {listKeyPaginate &&
                         listKeyPaginate
-
                             .map((key, index) => {
                                 return (
-                                    <tr key={`table-key-${index}`} className={key.status === "Hỏng" ? 'inactivity' : ''} >
+                                    <tr key={`table-key-${index}`}  >
                                         <td>{key.id}</td>
                                         <td>{key.room}</td>
                                         <td>
@@ -76,7 +75,7 @@ const TableKey = (props) => {
                                             <Button
                                                 variant="warning"
                                                 onClick={() => props.handleUpdateDevice(key, "KEY")}
-                                            >Delete</Button>
+                                            >Xóa thiết bị</Button>
 
                                         </td>
                                     </tr>

@@ -177,7 +177,7 @@ const ManageDevicesCSVC = (props) => {
                 <Accordion.Item eventKey="0">
                     <Accordion.Header
                         onClick={() => setCurrentPage(1)}
-                    >Key</Accordion.Header>
+                    >Chìa khóa</Accordion.Header>
                     <Accordion.Body>
                         <TableKey
                             listKeyOfCSVC={keyOfCSVC}

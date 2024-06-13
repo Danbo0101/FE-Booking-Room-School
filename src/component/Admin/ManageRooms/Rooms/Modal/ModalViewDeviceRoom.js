@@ -21,16 +21,16 @@ const ViewDevices = (props) => {
             className='modal-add-user'
         >
             <Modal.Header closeButton>
-                <Modal.Title>View Devices At Room {dataView.room}</Modal.Title>
+                <Modal.Title>Xem thiết bị của phòng {dataView.room}</Modal.Title>
             </Modal.Header>
             <Modal.Body>
                 < Table bordered >
                     <thead class="text-center">
                         <tr >
                             <th>ID</th>
-                            <th>Name</th>
-                            <th>Room</th>
-                            <th>Status</th>
+                            <th>Tên thiết bị</th>
+                            <th>Phòng</th>
+                            <th>Tình trạng</th>
                         </tr>
                     </thead>
                     <tbody class="text-center">
@@ -53,13 +53,13 @@ const ViewDevices = (props) => {
                 </Table >
 
             </Modal.Body>
-            <Modal.Footer>
+            {/* <Modal.Footer>
                 <Button variant="secondary"
                     onClick={handleClose}
                 >
                     Close
                 </Button>
-            </Modal.Footer>
+            </Modal.Footer> */}
         </Modal>
     )
 }

@@ -23,9 +23,9 @@ const ViewStudent = (props) => {
     useEffect(() => {
         if (!_.isEmpty(dataView)) {
             setName(dataView.name);
-            setClassName(dataView.className);
+            setClassName(dataView.class_name);
             setEmail(dataView.email);
-            setPhone(dataView.phone);
+            setPhone(dataView.phone_number);
         }
     }, [dataView]);
 
@@ -38,12 +38,12 @@ const ViewStudent = (props) => {
             className='modal-add-user'
         >
             <Modal.Header closeButton>
-                <Modal.Title>View A Student</Modal.Title>
+                <Modal.Title>Xem thông tin sinh viên</Modal.Title>
             </Modal.Header>
             <Modal.Body>
                 <form className="row g-3">
                     <div className="col-md-6">
-                        <label className="form-label">Name</label>
+                        <label className="form-label">Tên</label>
                         <input
                             type="text"
                             className="form-control"
@@ -61,7 +61,7 @@ const ViewStudent = (props) => {
                         />
                     </div>
                     <div className="col-md-6">
-                        <label className="form-label">Class</label>
+                        <label className="form-label">Lớp</label>
                         <input
                             type="text"
                             className="form-control"
@@ -70,7 +70,7 @@ const ViewStudent = (props) => {
                         />
                     </div>
                     <div className="col-md-6">
-                        <label className="form-label">Phone</label>
+                        <label className="form-label">Số điện thoại</label>
                         <input
                             type="text"
                             className="form-control"
@@ -81,11 +81,11 @@ const ViewStudent = (props) => {
                 </form>
             </Modal.Body>
             <Modal.Footer>
-                <Button variant="secondary"
+                {/* <Button variant="secondary"
                     onClick={handleClose}
                 >
                     Close
-                </Button>
+                </Button> */}
             </Modal.Footer>
         </Modal>
     )

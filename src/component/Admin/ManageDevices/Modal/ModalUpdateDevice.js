@@ -42,28 +42,23 @@ const UpdateDevice = (props) => {
             className='modal-add-user'
         >
             <Modal.Header closeButton>
-                <Modal.Title>Update Status {nameDevice} In Room {dataUpdate.room}</Modal.Title>
+                <Modal.Title>Thay đổi trạng thái của {nameDevice} trong phòng {dataUpdate.room}</Modal.Title>
             </Modal.Header>
             {dataUpdate.status === "Hoạt động" ?
                 <Modal.Body>
-                    Do you agree to change the status {nameDevice} of room {dataUpdate.room} from <strong>Activity</strong> to <strong>Inactivity</strong>?
+                    Bạn có đồng ý thay đổi trạng thái của thiết bị {nameDevice} thuộc phòng {dataUpdate.room} từ <strong>Hoạt động</strong> sang <strong>Mất</strong> không?
                 </Modal.Body>
                 :
                 <Modal.Body>
-                    Do you agree to change the status {nameDevice} of room {dataUpdate.room} from <strong>Inactivity</strong> to <strong>Activity</strong>?
+                    Bạn có đồng ý thay đổi trạng thái của thiết bị {nameDevice} thuộc phòng {dataUpdate.room} từ <strong>Hoạt động</strong> sang <strong>Mất</strong> không?
                 </Modal.Body>
             }
 
             <Modal.Footer>
-                <Button variant="secondary"
-                    onClick={handleClose}
-                >
-                    Close
-                </Button>
                 <Button variant="primary"
                     onClick={() => props.handleUpdateStatusDevice()}
                 >
-                    Confirm
+                    Xác nhận
                 </Button>
             </Modal.Footer>
         </Modal>

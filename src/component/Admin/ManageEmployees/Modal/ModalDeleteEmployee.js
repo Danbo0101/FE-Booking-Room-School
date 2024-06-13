@@ -38,25 +38,25 @@ const DeleteEmployee = (props) => {
             backdrop='static'
         >
             <Modal.Header closeButton>
-                <Modal.Title>Confirm Delete the Employee ?</Modal.Title>
+                <Modal.Title>Xác nhận xóa nhân viên ?</Modal.Title>
             </Modal.Header>
-            <Modal.Body>Are you sure Delete the Employee.
+            <Modal.Body>Bạn có chắc muốn xóa nhân viên
                 <br />
-                Name :
+                Tên :
                 <b>
                     {dataDelete && dataDelete.name ? dataDelete.name : ""}
                 </b>
                 <br />
-                With Email :
+                với Email :
                 <b>
                     {dataDelete && dataDelete.email ? dataDelete.email : ""}
                 </b>
                 <br />
             </Modal.Body>
             <Modal.Footer>
-                <Button variant="secondary" onClick={handleClose}>
+                {/* <Button variant="secondary" onClick={handleClose}>
                     Cancel
-                </Button>
+                </Button> */}
                 <Button variant="primary"
                     onClick={() => handleSubmitDeleteEmployee()}
                 >

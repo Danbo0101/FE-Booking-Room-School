@@ -51,8 +51,8 @@ const TableKey = (props) => {
                 <thead>
                     <tr>
                         <th>ID</th>
-                        <th>Status</th>
-                        <th>Action</th>
+                        <th>Tình trạng</th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -68,7 +68,7 @@ const TableKey = (props) => {
                                         <Button
                                             variant="warning"
                                             onClick={() => props.handleUpdateDevice(key, "KEY")}
-                                        >Delete</Button>
+                                        >Xóa thiết bị</Button>
 
                                     </td>
                                 </tr>

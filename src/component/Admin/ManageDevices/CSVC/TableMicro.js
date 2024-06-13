@@ -50,8 +50,8 @@ const TableMicro = (props) => {
                 <thead>
                     <tr>
                         <th>ID</th>
-                        <th>Status</th>
-                        <th>Action</th>
+                        <th>Tình trạng</th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -67,7 +67,7 @@ const TableMicro = (props) => {
                                         <Button
                                             variant="warning"
                                             onClick={() => props.handleUpdateDevice(micro, "MIC")}
-                                        >Delete</Button>
+                                        >Xóa thiết bị</Button>
 
                                     </td>
                                 </tr>

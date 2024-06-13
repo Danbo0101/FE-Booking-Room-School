@@ -20,28 +20,28 @@ const UpdateRoom = (props) => {
             className='modal-add-user'
         >
             <Modal.Header closeButton>
-                <Modal.Title>Update Status In Room {dataUpdate.roomId}</Modal.Title>
+                <Modal.Title>Thay đổi trạng thái phòng {dataUpdate.roomId}</Modal.Title>
             </Modal.Header>
             {dataUpdate.roomStatus === "Hoạt động" ?
                 <Modal.Body>
-                    Do you agree to change the status of room {dataUpdate.roomId} from <strong>Operation</strong> to <strong>Maintenance</strong>?
+                    Bạn có đồng ý thay đổi trạng thái phòng {dataUpdate.roomId} từ <strong>Hoạt Động</strong> sang <strong>Bảo trì</strong> không?
                 </Modal.Body>
                 :
                 <Modal.Body>
-                    Do you agree to change the status of room {dataUpdate.roomId} from <strong>Maintenance</strong> to <strong>Operation</strong>?
+                    Bạn có đồng ý thay đổi trạng thái phòng {dataUpdate.roomId} từ <strong>Bảo trì</strong> sang <strong>Hoạt Động</strong> không?
                 </Modal.Body>
             }
 
             <Modal.Footer>
-                <Button variant="secondary"
+                {/* <Button variant="secondary"
                     onClick={handleClose}
                 >
                     Close
-                </Button>
+                </Button> */}
                 <Button variant="primary"
                     onClick={() => props.handleUpdateStatusRoom()}
                 >
-                    Confirm
+                    Xác nhận
                 </Button>
             </Modal.Footer>
         </Modal>

@@ -81,18 +81,18 @@ const ManageDevicesOfClass = (props) => {
     const handleUpdateStatusDevice = async () => {
 
 
-        let data = {
-            category: dataUpdate.category,
-            room: dataUpdate.room
-        }
+        let data = {};
 
         if (dataUpdate.status === "Hỏng") {
             data.status = 7;
         }
         else data.status = 6;
 
+        console.log(dataUpdate.id, data);
+
 
         let res = await patchUpdateDevice(dataUpdate.id, data);
+        console.log(res);
         if (!res.message) {
             props.fetchListDevice();
             setShowUpdate(false);
@@ -155,7 +155,7 @@ const ManageDevicesOfClass = (props) => {
                 <Accordion.Item eventKey="0">
                     <Accordion.Header
                         onClick={() => setCurrentPage(1)}
-                    >Key</Accordion.Header>
+                    >Chìa khóa</Accordion.Header>
                     <Accordion.Body>
                         <TableKey
                             listKeyOfClass={keyOfClass}

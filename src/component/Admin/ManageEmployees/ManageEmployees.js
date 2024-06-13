@@ -30,6 +30,7 @@ const ManageEmployees = (props) => {
 
 
     const [listEmployees, setListEmployees] = useState([]);
+    const [listEmployeesActive, setListEmployeesActive] = useState([]);
 
 
 
@@ -41,9 +42,9 @@ const ManageEmployees = (props) => {
 
         let data = await getAllEmployee();
         if (data && data.length > 0) {
-            const listEmloyeeClone = data.filter(employee => employee.status === "Còn làm");
+
             // console.log(listEmloyeeClone);
-            setListEmployees(listEmloyeeClone);
+            setListEmployees(data);
         }
         else {
             console.log(data.message);
@@ -54,17 +55,26 @@ const ManageEmployees = (props) => {
 
 
     useEffect(() => {
-        CalPageCount();
+        if (listEmployees) {
+            let listEmloyeeClone = listEmployees.filter(employee => employee.status === "Còn làm");
+            setListEmployeesActive(listEmloyeeClone);
+        }
     }, [listEmployees])
+
+
+
+    useEffect(() => {
+        CalPageCount();
+    }, [listEmployeesActive])
 
     useEffect(() => {
         fetchListWithPaginate()
-    }, [currentPage, listEmployees])
+    }, [currentPage, listEmployeesActive])
 
 
 
     const CalPageCount = () => {
-        const totalEmployees = listEmployees.length;
+        const totalEmployees = listEmployeesActive.length;
         const totalPages = Math.ceil(totalEmployees / LIMIT_EMPLOYEE);
         setPageCount(totalPages);
         // console.log(currentPage);
@@ -73,7 +83,7 @@ const ManageEmployees = (props) => {
     const fetchListWithPaginate = () => {
         const startIndex = (currentPage - 1) * LIMIT_EMPLOYEE;
         const endIndex = startIndex + LIMIT_EMPLOYEE;
-        const paginatedList = listEmployees.slice(startIndex, endIndex);
+        const paginatedList = listEmployeesActive.slice(startIndex, endIndex);
         setListEmployeePaginate(paginatedList);
         // console.log(paginatedList);
     }
@@ -108,17 +118,18 @@ const ManageEmployees = (props) => {
     return (
         <div className="manage-employees-container">
             <div className="title-page">
-                Manage Employees
+                Quản lý nhân viên
             </div>
             <hr />
             <div className="main-ms-container">
                 <div>
                     <Accordion >
                         <Accordion.Item eventKey="0">
-                            <Accordion.Header>Add Employees</Accordion.Header>
+                            <Accordion.Header>Thêm nhân viên</Accordion.Header>
                             <Accordion.Body>
                                 <CreateEmployee
                                     listEmployees={listEmployees}
+                                    fetchListEmployee={fetchListEmployee}
                                 />
                             </Accordion.Body>
                         </Accordion.Item>

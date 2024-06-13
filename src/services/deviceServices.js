@@ -20,10 +20,20 @@ const patchUpdateDevice = (deviceId, data) => {
     return axios.patch(`/api/device/${deviceId}`, { ...data });
 }
 
+const patchUpdateReturnedDevice = (data) => {
+    return axios.patch(`/api/booking/update-returned-time-device`, { ...data });
+}
+
+const postAddDeviceToBooking = (data) => {
+    return axios.post(`/api/booking/add-device`, { ...data });
+}
+
 export {
     getDeviceByRoomId,
     getAllDeviceCategory,
     getCreateDevice,
     getAllDevice,
-    patchUpdateDevice
+    patchUpdateDevice,
+    patchUpdateReturnedDevice,
+    postAddDeviceToBooking
 }

@@ -64,12 +64,12 @@ const UpdateEmployee = (props) => {
             className='modal-add-user'
         >
             <Modal.Header closeButton>
-                <Modal.Title>Update A Employee</Modal.Title>
+                <Modal.Title>Sửa thông tin nhân viên</Modal.Title>
             </Modal.Header>
             <Modal.Body>
                 <form className="row g-3">
                     <div className="col-md-6">
-                        <label className="form-label">Name</label>
+                        <label className="form-label">Tên</label>
                         <input
                             type="text"
                             className="form-control"
@@ -88,7 +88,7 @@ const UpdateEmployee = (props) => {
                         />
                     </div> */}
                     <div className="col-md-6">
-                        <label className="form-label">Phone</label>
+                        <label className="form-label">Số điện thoại</label>
                         <input
                             type="text"
                             className="form-control"
@@ -110,15 +110,15 @@ const UpdateEmployee = (props) => {
                 </form>
             </Modal.Body>
             <Modal.Footer>
-                <Button variant="secondary"
+                {/* <Button variant="secondary"
                     onClick={handleClose}
                 >
                     Close
-                </Button>
+                </Button> */}
                 <Button variant="primary"
                     onClick={() => handleSubmitUpdateStudent()}
                 >
-                    Save
+                    Lưu thông tin
                 </Button>
             </Modal.Footer>
         </Modal>

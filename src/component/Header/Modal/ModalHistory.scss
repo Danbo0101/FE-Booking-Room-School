@@ -1,0 +1,49 @@
+.filter-container {
+  background-color: #f8f9fa;
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+}
+
+.filter-container .form-check {
+  margin-right: 20px;
+}
+
+.filter-container .form-check-input {
+  margin-top: 0.3em;
+}
+
+.filter-container .d-flex {
+  margin-top: 20px;
+}
+
+.filter-container .form-control {
+  border-radius: 5px;
+}
+
+.details-button {
+  background-color: #007bff;
+  border: none;
+  color: white;
+  padding: 8px 16px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 4px;
+  transition-duration: 0.4s;
+}
+
+.details-button:hover {
+  background-color: #0069d9;
+  color: white;
+}
+
+.center-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

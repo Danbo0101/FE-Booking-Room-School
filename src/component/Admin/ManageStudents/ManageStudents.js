@@ -8,6 +8,7 @@ import UpdateStudent from './Modal/ModalUpdateStudent';
 import DeleteStudent from './Modal/ModalDeleteStudent';
 import TableStudent from './TableStudent';
 import _ from 'lodash';
+import { getAllStudent } from '../../../services/studentServices';
 
 
 const ManageStudent = (props) => {
@@ -26,92 +27,20 @@ const ManageStudent = (props) => {
     const [currentPage, setCurrentPage] = useState(1)
 
 
-    const [listStudent, setListStudent] = useState([
-        {
-            id: 1,
-            name: "Phung",
-            phone: "09123456789",
-            className: "D21CQCN01-N",
-            email: "N21DCCN631@student.ptithcm.edu.vn"
-        },
-        {
-            id: 2,
-            name: "Phuc",
-            phone: "09123456789",
-            className: "D21CQCN01-N",
-            email: "N21DCCN633@student.ptithcm.edu.vn"
-        },
-        {
-            id: 3,
-            name: "Phuong",
-            phone: "09123456789",
-            className: "D21CQCN01-N",
-            email: "N21DCCN632@student.ptithcm.edu.vn"
-        },
-        {
-            id: 4,
-            name: "Phat",
-            phone: "09123456789",
-            className: "D21CQCN01-N",
-            email: "N21DCCN630@student.ptithcm.edu.vn"
-        },
-        {
-            id: 5,
-            name: "Phung",
-            phone: "09123456789",
-            className: "D21CQCN01-N",
-            email: "N21DCCN631@student.ptithcm.edu.vn"
-        },
-        {
-            id: 6,
-            name: "Phuc",
-            phone: "09123456789",
-            className: "D21CQCN01-N",
-            email: "N21DCCN633@student.ptithcm.edu.vn"
-        },
-        {
-            id: 7,
-            name: "Phuong",
-            phone: "09123456789",
-            className: "D21CQCN01-N",
-            email: "N21DCCN632@student.ptithcm.edu.vn"
-        },
-        {
-            id: 8,
-            name: "Phat",
-            phone: "09123456789",
-            className: "D21CQCN01-N",
-            email: "N21DCCN630@student.ptithcm.edu.vn"
-        },
-        {
-            id: 9,
-            name: "Phung",
-            phone: "09123456789",
-            className: "D21CQCN01-N",
-            email: "N21DCCN631@student.ptithcm.edu.vn"
-        },
-        {
-            id: 10,
-            name: "Phuc",
-            phone: "09123456789",
-            className: "D21CQCN01-N",
-            email: "N21DCCN633@student.ptithcm.edu.vn"
-        },
-        {
-            id: 11,
-            name: "Phuong",
-            phone: "09123456789",
-            className: "D21CQCN01-N",
-            email: "N21DCCN632@student.ptithcm.edu.vn"
-        },
-        {
-            id: 12,
-            name: "Phat",
-            phone: "09123456789",
-            className: "D21CQCN01-N",
-            email: "N21DCCN630@student.ptithcm.edu.vn"
+    const [listStudent, setListStudent] = useState([]);
+
+    const fetchListStudent = async () => {
+
+        let res = await getAllStudent();
+        if (!res.message) {
+            setListStudent(res);
         }
-    ])
+        else console.log(res.message);
+    }
+
+    useEffect(() => {
+        fetchListStudent();
+    }, [])
 
     const [listStudentPaginate, setListStudentPaginate] = useState([]);
 
@@ -146,32 +75,32 @@ const ManageStudent = (props) => {
         setDataView(student);
     }
 
-    const handleUpdateStudent = (student) => {
-        setShowUpdate(true);
-        setDataUpdate(student);
-    }
+    // const handleUpdateStudent = (student) => {
+    //     setShowUpdate(true);
+    //     setDataUpdate(student);
+    // }
 
-    const handleDeleteStudent = (student) => {
-        setShowDelete(true);
-        setDataDelete(student);
+    // const handleDeleteStudent = (student) => {
+    //     setShowDelete(true);
+    //     setDataDelete(student);
 
-    }
+    // }
 
-    const handleSubmitDeleteStudent = () => {
-        const listStudentClone = _.cloneDeep(listStudent);
-        let index = listStudentClone.findIndex(item => item.id === dataDelete.id);
-        if (index !== -1) {
-            listStudentClone.splice(index, 1);
+    // const handleSubmitDeleteStudent = () => {
+    //     const listStudentClone = _.cloneDeep(listStudent);
+    //     let index = listStudentClone.findIndex(item => item.id === dataDelete.id);
+    //     if (index !== -1) {
+    //         listStudentClone.splice(index, 1);
 
-            setListStudent(listStudentClone);
-        }
-        setShowDelete(false)
-    }
+    //         setListStudent(listStudentClone);
+    //     }
+    //     setShowDelete(false)
+    // }
 
     return (
         <div className="manage-student-container">
             <div className="title-page">
-                Manage Students
+                Quản lý sinh viên
             </div>
             <hr />
             <div className="main-ms-container">
@@ -190,8 +119,8 @@ const ManageStudent = (props) => {
                         // listStudent={listStudent}
                         listStudentPaginate={listStudentPaginate}
                         handleViewStudent={handleViewStudent}
-                        handleUpdateStudent={handleUpdateStudent}
-                        handleDeleteStudent={handleDeleteStudent}
+                        // handleUpdateStudent={handleUpdateStudent}
+                        // handleDeleteStudent={handleDeleteStudent}
                         pageCount={pageCount}
                         currentPage={currentPage}
                         setCurrentPage={setCurrentPage}
@@ -205,7 +134,7 @@ const ManageStudent = (props) => {
                 setShow={setShowView}
                 dataView={dataView}
             />
-            <UpdateStudent
+            {/* <UpdateStudent
                 show={showUpdate}
                 setShow={setShowUpdate}
                 dataUpdate={dataUpdate}
@@ -216,7 +145,7 @@ const ManageStudent = (props) => {
                 dataDelete={dataDelete}
                 setCurrentPage={setCurrentPage}
                 handleSubmitDeleteStudent={handleSubmitDeleteStudent}
-            />
+            /> */}
         </div>
     )
 }

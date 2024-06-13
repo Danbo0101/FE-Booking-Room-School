@@ -131,12 +131,12 @@ const CreateRoom = (props) => {
                     onChange={(event) => setNameRoom((event.target.value).toUpperCase())}
                     value={nameRoom}
                 />
-                <label htmlFor="floatingInputCustom">Name Room</label>
+                <label htmlFor="floatingInputCustom">Tên phòng</label>
             </Form.Floating>
             <Row className="g-2 ">
                 <Col md>
                     <Form.Group className="mb-3">
-                        <Form.Label htmlFor="selectFloor">Floor</Form.Label>
+                        <Form.Label htmlFor="selectFloor">Lầu</Form.Label>
                         <Form.Select
                             id="selectFloor"
                             onChange={(e) => setFloor(parseInt(e.target.value))}
@@ -152,7 +152,7 @@ const CreateRoom = (props) => {
                 </Col>
                 <Col md>
                     <Form.Group className="mb-3">
-                        <Form.Label htmlFor="selectZone">Zone</Form.Label>
+                        <Form.Label htmlFor="selectZone">Dãy</Form.Label>
                         <Form.Select
                             id="selectZone"
                             onChange={(e) => setZone(e.target.value)}
@@ -175,7 +175,7 @@ const CreateRoom = (props) => {
                 <Button
                     variant="outline-info"
                     onClick={() => handleSubmitCreateRoom()}
-                >Submit</Button>
+                >Tạo phòng</Button>
                 {/* <Button
                     variant="outline-info"
                     onClick={() => handleCreateDeviceByRoom()}

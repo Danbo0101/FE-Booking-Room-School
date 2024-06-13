@@ -18,9 +18,9 @@ const TableEmployees = (props) => {
                 <thead>
                     <tr>
                         <th>STT</th>
-                        <th>Name</th>
+                        <th>Tên</th>
                         <th>Email</th>
-                        <th>Action</th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -36,15 +36,15 @@ const TableEmployees = (props) => {
                                         <Button
                                             variant="info"
                                             onClick={() => props.handleViewEmployee(employee)}
-                                        >View</Button>
+                                        >Xem thông tin</Button>
                                         <Button
                                             variant="warning"
                                             onClick={() => props.handleUpdateEmployee(employee)}
-                                        >Edit</Button>
+                                        >Sửa thông tin</Button>
                                         <Button
                                             variant="danger"
                                             onClick={() => props.handleDeleteEmployee(employee)}
-                                        >Delete</Button>
+                                        >Xóa nhân viên</Button>
                                     </td>
                                 </tr>
                             )

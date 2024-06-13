@@ -77,19 +77,19 @@ const CreateDevice = (props) => {
                     <>
                         <Modal.Header closeButton>
                             <Modal.Title id="contained-modal-title-vcenter">
-                                Create Device Of CSVC
+                                Tạo thiết bị của phòng CSVC
                             </Modal.Title>
                         </Modal.Header>
                         <Modal.Body>
                             <Row className="g-2 ">
                                 <Form.Group className="mb-3">
-                                    <Form.Label htmlFor="selectCategory">Category</Form.Label>
+                                    <Form.Label htmlFor="selectCategory">Loại thiết bị</Form.Label>
                                     <Form.Select
                                         id="selectCategory"
                                         onChange={(e) => setCategory(e.target.value)}
                                         value={category}
                                     >
-                                        <option defaultValue="">Select Category</option>
+                                        <option defaultValue="">Chọn loại thiết bị</option>
                                         {listCategory && listCategory
                                             .map((cate, index) => {
 
@@ -113,27 +113,27 @@ const CreateDevice = (props) => {
                                 props.handleSubmitCreateDevice("CSVC", category);
                                 handleClose();
                             }
-                            }>Submit</Button>
+                            }>Tạo thiết bị</Button>
                         </Modal.Footer>
                     </>
                     :
                     <>
                         <Modal.Header closeButton>
                             <Modal.Title id="contained-modal-title-vcenter">
-                                Create Device Of Room
+                                Tạo thiết bị cho phòng học
                             </Modal.Title>
                         </Modal.Header>
                         <Modal.Body>
                             <Row className="g-3 ">
                                 <Col md>
                                     <Form.Group className="mb-2">
-                                        <Form.Label htmlFor="selectRoom">Room</Form.Label>
+                                        <Form.Label htmlFor="selectRoom">Phòng</Form.Label>
                                         <Form.Select
                                             id="selectRoom"
                                             onChange={(e) => setNameRoom(e.target.value)}
                                             value={nameRoom}
                                         >
-                                            <option defaultValue="">Select Room</option>
+                                            <option defaultValue="">Chọn phòng</option>
                                             {listNameRoom && listNameRoom
 
                                                 .map((room, index) => {
@@ -150,13 +150,13 @@ const CreateDevice = (props) => {
                                 </Col>
                                 <Col md>
                                     <Form.Group className="mb-3">
-                                        <Form.Label htmlFor="selectCategory">Category</Form.Label>
+                                        <Form.Label htmlFor="selectCategory">Loại thiết bị</Form.Label>
                                         <Form.Select
                                             id="selectCategory"
                                             onChange={(e) => setCategory(e.target.value)}
                                             value={category}
                                         >
-                                            <option defaultValue="">Select Category</option>
+                                            <option defaultValue="">Chọn loại thiết bị</option>
                                             {listCategory && listCategory
                                                 .filter(cate => cate.id !== "HDMI")
                                                 .map((cate, index) => {
@@ -180,7 +180,7 @@ const CreateDevice = (props) => {
                             <Button onClick={() => {
                                 props.handleSubmitCreateDevice(nameRoom, category);
                                 handleClose();
-                            }}>Submit</Button>
+                            }}>Tạo thiết bị</Button>
                         </Modal.Footer>
                     </>
                 }

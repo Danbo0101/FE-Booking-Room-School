@@ -1,0 +1,49 @@
+.booking-today-container {
+    .filter {
+        display: flex;
+        align-items: center;
+        width: 100vw;
+        gap: 30px;
+        padding: 20px 0;
+
+        .form-floating {
+            width: 42vw;
+
+        }
+
+        .btn-filter {
+            cursor: pointer;
+
+
+            svg {
+                font-size: 25px;
+                color: rgb(47, 255, 78);
+            }
+        }
+    }
+
+    .table {
+        text-align: center;
+
+        .btn-view-detail,
+        .btn-add-device,
+        .btn-refund-device {
+            margin-right: 10px;
+
+        }
+
+
+        .btn-refund-device {
+            margin-right: 0;
+        }
+
+        .not-found {
+            display: flex;
+            justify-content: center;
+            padding: 40px;
+            font-size: 20px;
+            border: 0 solid;
+            background-color: rgb(176, 53, 0);
+        }
+    }
+}

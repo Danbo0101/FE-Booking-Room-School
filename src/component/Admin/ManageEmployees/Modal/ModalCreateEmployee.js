@@ -10,6 +10,10 @@ const CreateEmployee = (props) => {
 
     const { listEmployees } = props;
 
+    console.log(listEmployees);
+
+    // const listEmloyeeClone = data.filter(employee => employee.status === "Còn làm");
+
     const [id, setId] = useState('');
     const [email, setEmail] = useState('');
     const [name, setName] = useState('');
@@ -32,14 +36,16 @@ const CreateEmployee = (props) => {
         for (let i = 1; i < listEmployees.length; i++) {
             if (listEmployees[i].employee_id > listEmployees[maxIndex].employee_id) {
                 maxIndex = i;
+
             }
         }
+        console.log(maxIndex);
         const maxEmployeeId = listEmployees[maxIndex].employee_id;
         const maxNumber = parseInt(maxEmployeeId.slice(2));
         const newNumber = maxNumber + 1;
         const newEmployeeId = "NV" + newNumber.toString().padStart(3, "0");
         setId(newEmployeeId);
-        // console.log(newEmployeeId);
+        console.log(newEmployeeId);
     }
 
     const handleKeyDown = (event) => {
@@ -92,7 +98,7 @@ const CreateEmployee = (props) => {
             case !phoneNumber || !isPhoneNumber:
                 toast.error("Invalid Phone Number");
                 return;
-            case !identificationNumber || identificationNumber.length !== 12 || !/^\d+$/.test(identificationNumber):
+            case !identificationNumber:
                 toast.error("Invalid CCCD");
                 return;
             default:
@@ -108,12 +114,16 @@ const CreateEmployee = (props) => {
             identification_number: identificationNumber
         }
 
-        // console.log(data)
+
+
+        console.log(data)
         //api
         let res = await postCreateEmployee(data);
         if (!res.message) {
             toast.success("Create Employee Success");
+            props.fetchListEmployee();
             resetDataCreate();
+
         }
         else {
             toast.error("Create Employee Fail");
@@ -136,7 +146,7 @@ const CreateEmployee = (props) => {
                     onChange={(e) => setName(capitalizeName(e.target.value))}
                 // onKeyDown={(event) => handleKeyDown(event)}
                 />
-                <label htmlFor="floatingInputCustom">Name</label>
+                <label htmlFor="floatingInputCustom">Tên</label>
             </Form.Floating>
             <Row className="g-2 ">
                 <Col md>
@@ -149,7 +159,7 @@ const CreateEmployee = (props) => {
                             onChange={(e) => setPhoneNumber(e.target.value)}
                         // onKeyDown={(event) => handleKeyDown(event)}
                         />
-                        <label htmlFor="floatingInputCustom">Phone</label>
+                        <label htmlFor="floatingInputCustom">Số điện thoại</label>
                     </Form.Floating>
                 </Col>
                 <Col md>
@@ -182,7 +192,7 @@ const CreateEmployee = (props) => {
                 <Button
                     variant="outline-info"
                     onClick={() => handleSubmitCreateEmployee()}
-                >Submit</Button>
+                >Thêm nhân viên</Button>
             </div>
 
 
